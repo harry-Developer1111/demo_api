@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:ui';
 import 'package:demo_api_app/api_link/api_link.dart';
+import 'package:demo_api_app/mixin/mixins.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:http/http.dart' as http;
@@ -14,7 +15,13 @@ class RegisterPage extends StatefulWidget {
   State<RegisterPage> createState() => _RegisterPageState();
 }
 
-class _RegisterPageState extends State<RegisterPage> {
+class _RegisterPageState extends State<RegisterPage>
+    with SnackBarMixin {
+
+  void signUpMessage(){
+    showMessage(context, 'Create Account Successfully');
+  }
+
 
   final formKey=GlobalKey<FormState>();
 
@@ -49,12 +56,13 @@ class _RegisterPageState extends State<RegisterPage> {
 
       if(response.statusCode==200||response.statusCode==201){
         print(response.body);
-        ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text("Create Account Successfully"))
-        );
+
+        signUpMessage();
+
         await pref.setBool("isLogin", true);
         if(!mounted)return;
         context.go('/home');
+
       }else{
         ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(content: Text(" Account not Created"))

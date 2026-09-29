@@ -44,6 +44,7 @@ class _BottomSheetWorkState extends State<BottomSheetWork> {
   // }
 
   //Controllers
+
   final nameController = TextEditingController();
   final yearController = TextEditingController();
   final priceController = TextEditingController();
@@ -127,6 +128,9 @@ class _BottomSheetWorkState extends State<BottomSheetWork> {
         side: BorderSide(
           color: Colors.blue,
           width: 2, ),
+          padding: EdgeInsets.symmetric(
+              horizontal: 8
+          ),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(20), ), ),
       child: Row(
@@ -182,19 +186,27 @@ class _BottomSheetWorkState extends State<BottomSheetWork> {
             ),
 
             Row(
+
               children: [
-                categoryButton( title: "phones",
-                  icon: Icons.work_outline,
+                Expanded(
+                  child: categoryButton(
+                    title: "phones",
+                    icon: Icons.work_outline,
+                  ),
                 ),
                 const SizedBox(width: 4,),
 
-                categoryButton( title: "tablets",
-                  icon: Icons.perm_identity, ),
+                Expanded(
+                  child: categoryButton( title: "tablets",
+                    icon: Icons.perm_identity, ),
+                ),
 
                 const SizedBox(width: 4,),
 
-                categoryButton( title: "macbooks",
-                  icon: Icons.school_outlined, ),
+                Expanded(
+                  child: categoryButton( title: "macbooks",
+                    icon: Icons.school_outlined, ),
+                ),
               ],
             ),
 
@@ -215,10 +227,6 @@ class _BottomSheetWorkState extends State<BottomSheetWork> {
               controller: nameController,
               decoration: InputDecoration(
                   hintText: "name",
-                  // contentPadding: EdgeInsets.symmetric(
-                  //     // vertical: 50,
-                  //     // horizontal: 20
-                  // ),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
                   )),

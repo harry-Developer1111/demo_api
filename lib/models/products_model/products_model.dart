@@ -1,8 +1,8 @@
 class ProductModel {
   final String id;
   final String name;
-  final int year;
-  final dynamic price;
+  final String year;
+  final String price;
 
   ProductModel({
     required this.id,
@@ -13,10 +13,10 @@ class ProductModel {
 
   factory ProductModel.fromJson(Map<String, dynamic> json) {
     return ProductModel(
-      id: json["id"] ?? "",
-      name: json["name"] ?? "",
-      year: json["data"]?["year"] ?? 0,
-      price: json["data"]?["price"] ?? 0,
+      id: json["id"]?.toString() ?? "",
+      name: json["name"]?.toString() ?? "",
+      year: json["data"]?["year"]?.toString() ?? "",
+      price: json["data"]?["price"]?.toString() ?? "",
     );
   }
 }

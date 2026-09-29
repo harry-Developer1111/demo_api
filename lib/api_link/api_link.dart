@@ -4,4 +4,5 @@ class ApiKeyConf{
 class ApiLink {
   static const register="https://api.restful-api.dev/register";
   static const loginApi="https://api.restful-api.dev/login";
+
 }
